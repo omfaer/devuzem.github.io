@@ -1,0 +1,10 @@
+# Site navigation links
+
+- title: Ana Sayfa
+  url: /
+
+- title: Hakkımızda
+  url: /about/
+
+- title: Arama
+  url: /search/
