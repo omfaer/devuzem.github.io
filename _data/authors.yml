@@ -5,17 +5,107 @@ uzem:
   web: http://uzem.omu.edu.tr
   email: irtibat@uzem.omu.edu.tr
   bio: "Uzaktan Eğitim Merkezi"
-  avatar: bio-photo.png
-  twitter: 
+  avatar: https://avatars2.githubusercontent.com/u/3858495
+  twitter: https://twitter.com/omuuzem
   google:
-    plus: 
+    plus: https://plus.google.com/u/0/105867697914510477398/about
 
 emre_demir:
   name: Emre Demir
   web: emredemir.github.io
   email: emre.demir@omu.edu.tr
   bio: ""
-  avatar: https://s.gravatar.com/avatar/61bb275148d14127708683d67904bf3a?s=80
+  avatar: https://avatars1.githubusercontent.com/u/3108789
+  twitter: 
+  google:
+    plus: 
+
+omer_faruk_er:
+  name: Ömer Faruk Er
+  web: emredemir.github.io
+  email: omfaer@bil.omu.edu.tr
+  bio: ""
+  avatar: http://s.gravatar.com/avatar/963ea82833bec8024546f57bfbffea37?s=80
+  twitter: https://twitter.com/omfaer
+  google:
+    plus: https://plus.google.com/u/0/102139656361749031436/posts 
+
+ecmel_kaytazoglu:
+  name: Ecmel Kaytazoğlu
+  web: http://ecmelkytz.github.io/
+  email: ecmel.kaytazoglu@uzem.omu.edu.tr
+  bio: ""
+  avatar: https://avatars0.githubusercontent.com/u/937358
+  twitter: 
+  google:
+    plus: 
+
+irfan_subas:
+  name: İrfan Subaş
+  web: 
+  email: irfan.subas@uzem.omu.edu.tr
+  bio: ""
+  avatar: https://avatars0.githubusercontent.com/u/5476376
+  twitter: 
+  google:
+    plus: 
+
+murat_ozdemir:
+  name: Murat Özdemir
+  web: 
+  email: murat.ozdemir@omu.edu.tr
+  bio: ""
+  avatar: https://avatars0.githubusercontent.com/u/5499534
+  twitter: 
+  google:
+    plus: 
+
+esra_yorulmaz:
+  name: Esra Yorulmaz
+  web: 
+  email: esra.yorulmaz@uzem.omu.edu.tr
+  bio: ""
+  avatar: https://avatars3.githubusercontent.com/u/1282236
+  twitter: 
+  google:
+    plus: 
+
+sahire_dogru:
+  name: Sahire Doğru
+  web: 
+  email: sahire.dogru@uzem.omu.edu.tr
+  bio: ""
+  avatar: https://avatars1.githubusercontent.com/u/13571930
+  twitter: 
+  google:
+    plus: 
+
+emrullah_saglam:
+  name: Emrullah Sağlam
+  web: 
+  email: emrullah.saglam@bil.omu.edu.tr
+  bio: ""
+  avatar: https://avatars2.githubusercontent.com/u/12038074
+  twitter: 
+  google:
+    plus: 
+
+mustafa_altinkaynak:
+  name: Mustafa Altınkaynak
+  web: https://www.altinkaynak.biz/
+  email: mustafa.altinkaynak@omu.edu.tr
+  bio: ""
+  avatar: https://avatars1.githubusercontent.com/u/8327307
+  twitter: 
+  google:
+    plus: 
+
+cevdet_akaydin:
+  name: Cevdet Akaydın
+  web: 
+  email: cevdet.akaydin@bil.omu.edu.tr
+  bio: ""
+  avatar: https://avatars0.githubusercontent.com/u/9880935
   twitter: 
   google:
     plus: 
