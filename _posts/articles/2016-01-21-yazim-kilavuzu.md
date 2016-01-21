@@ -100,7 +100,7 @@ module.exports = function doStuff(things) {
 }
 {% endhighlight %}
 
-Örnek bir `HTML kodu. highlight tipi: html
+Örnek bir `HTML` kodu. highlight tipi: html
 
 {% highlight html %}
 <div class="m0 p0 bg-blue white">
