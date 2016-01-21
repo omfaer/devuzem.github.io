@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Yazım Kılavuzu"
+title:  "Blog Yazısı Sözdizimi Kuralları"
 excerpt: ""
 author: emre_demir
 date:   2016-01-21
 categories: articles
-tags: [kılavuz]
+tags: [markdown, syntax]
 comments: true
 share: true
 ---
