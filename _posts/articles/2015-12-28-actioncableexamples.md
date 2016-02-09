@@ -2,86 +2,180 @@
 layout: post
 title:  "Action Cable Examples"
 excerpt: ""
-author: uzem
+author: omfaer
 date:   2015-12-28
 categories: articles
+tags: [docker]
 comments: true
 share: true
 ---
 
-## Action Cable
+# Ubuntu
 
-Action Cable Rails5 ile gelecek yeni özelliklerden biridir.
-Basit bir şekilde Websocket kullanmamıza olanak sağlar.
-Action Cable Rails uygulaması içinde bir soket bağlantısı açar. Ve o soket (kanal da denilebilir) içerisindeki akışa
-erişim sağlar.
+Docker aşağıdaki Ubuntu işletim sistemlerinde desteklenir.
 
-Diğer bir açıdan Realtime push notification.
+Ubuntu Wily 15.10
+Ubuntu Trusty 14.04 (LTS)
+Ubuntu Precise 12.04 (LTS)
 
-## Websocket
+Bu sayfa Docker-yönetim sürüm paketleri ve yükleme mekanizması hakkında bilgilendirir.
+Bu paketleri kullanarak Docker'ın son sürümünü elde etmenizi sağlar.
+Eğer Ubuntu-yönetim paketleri kullanarak yüklemek isterseniz, Ubuntu dokümantasyonuna bakınız.
 
-HTML5 ile birlikte gelen Websocket, herhangi bir yazılıma gerek duymadan Sunucu ile İstemci arasında bir bağlantı kurup
-bu bağlantıyı sürekli olarak kullanmaya yarayan bir protokoldür.
-Yani aradaki bu bağlantıyla istemci hızlı bir şekilde hem veri alıp hem de veri gönderebilir.
+Not: Docker'da Ubuntu Utopic 14.10 ve 15.04 de APT repoları bulunuyordu ancak artık resmen destenklenmektedir.
 
-## Push Notification(Anlık Bildirimler)
+# Prerequisites (Ön Koşullar)
 
-Doğrudan teslim edilen anlık mesajlar gönderilmesi olayı.
+Docker'ın olmazsa olmazı Ubuntu'nun 64-bit kurulmuş versiyonudur. Ayrıca kernel sürümünün minimum 3.10 olması gerekir. En az 3.10 sürümü veya daha yeni bir desteklenen versiyonu da kabul edilebilir.
 
-## Action Cable Examples
+3.10 dan daha eski kernel versiyonları Docker container larını çalıştırmak için gerekli olan bazı özelliklerden yoksundur. Bu eski sürümlerin bazı durumlarda veri kaybına ve sık sık panik haline yol açtığı bilinmektedir.
 
-Action Cable yeteneklerini sergileyen örneklerden oluşan bir koleksiyon.
-
-### Bağımlılıklar (Dependencies)
-
-Redis yüklü ve çalışır durumda olmalıdır. Default port:6379
+Mevcut kernel versiyonunu kontrol etmek için bir terminal açın ve `uname -r` komutuyla kernel sürümünü görüntüleyin.
 
 ```bash
-$netstat -tulpn
+$ uname -r
+3.19.0-49-generic
 ```
- ile port kontrol edilebilir.
 
-Redis Kurulumu
+Not: Eğer daha önce APT kullanarak Docker yüklediyseniz, yeni Docker reponun APT kaynaklarını güncellediğinizden emin olun.
 
-#### Linux Üzerine
+## Update your apt sources (APT kaynaklarını güncellemek)
+
+Docker'ın APT reposu Docker 1.7.1 ve üstü versiyonları içermektedir. Yeni repo paketlerini kullanmak için APT ayarlarını yapın:
+
+1. Yetkili bir kullanıcıyla Ubuntu'ya giriş yapın.
+
+2. Yeni bir terminal açın.
+
+3. Paket bilgilerini güncelleyin, CA sertifikalarının yüklü olduğundan emin olun.
 
 ```bash
-$ wget http://download.redis.io/redis-stable.tar.gz
-```
-```bash
-$ tar xvzf redis-stable.tar.gz
+$ apt-get update
+$ apt-get install apt-transport-https ca-certificates
 ```
 
-```bash
-$ cd redis-stable
-```
-```bash
-$ make
-```
+4. Yeni bir GPG anahtarı ekleyin.
 
 ```bash
-$ make install
+$ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 ```
 
-#### Mac Üzerine
+5. `/etc/apt/sources.list.d/docker.list` dosyasını terminalde açın. Eğer dosya yoksa oluşturun.
+
+6. Tüm girdileri silin.
+
+7. Ubuntu işletim sistemi için aşağıdaki satırlardan ilgili olanı ekleyin.
+
+* On Ubuntu Precise 12.04 (LTS)
+
 ```bash
-brew install redis
+deb https://apt.dockerproject.org/repo ubuntu-precise main
 ```
 
-Note: Redis kullanmak için Ruby 2.2.2 yüklenmiş olmalıdır.
+* On Ubuntu Trusty 14.04 (LTS)
 
+```bash
+deb https://apt.dockerproject.org/repo ubuntu-trusty main
+```
 
-### Sunucuları Başlatma
+* Ubuntu Wily 15.10
 
-1. `./bin/setup`
-2. `./bin/cable`
-3. Yeni bir terminal açın ve çalıştırın: `./bin/rails server`
-4. Redis serveri çalıştırmak için de yeni bir terminal açın: `redis-server`
-4. Browserda `http://localhost:3000`
+```bash
+deb https://apt.dockerproject.org/repo ubuntu-wily main
+```
 
-### Live comments example
+Not: Docker tüm mimariler için paket sağlamamaktadır. Multi-architecture bir sisteme Docker yüklemek için [arch=...] cümlesini ekleyin. Ayrıntılar için Debian Multiarch wiki'sine bakınız.
 
-1. Ayrı cookies kullanan 2 tarayıcı açın(Biri normal diğeri gizli oturum gibi.)
-2. İki farklı tarayıcıda iki farklı kişiymiş gibi davranın.
-3. İki kullanıcıdan da aynı mesaja geçin.
-4. Her iki tarayıcıda yorum ekleyin. Gerçekzamanlı çalıştığını göreceksiniz.
+8. /etc/apt/sources.list.d/docker.list dosyasını kaydedin ve kapatın.
+
+9. APT paket index güncelleyin.
+
+```bash
+$ apt-get update
+```
+
+10. Varsa eski repoları temizleyin.
+
+```bash
+$ apt-get purge lxc-docker
+```
+
+11. Bu apt reposunu doğrulayın.
+
+```bash
+$ apt-cache policy docker-engine
+```
+
+Bundan sonra `apt-get upgrade` komutunu çalıştırdığınızda yeni depodan çeker.
+
+## Prerequisites by Ubuntu Version (Ubuntu Versiyonu Önkoşullar)
+
+* Ubuntu Wily 15.10
+* Ubuntu Vivid 15.04
+* Ubuntu Trusty 14.04 (LTS)
+
+Ubuntu Trusty, Vivid, ve Wily versiyoları için `linux-image-extra` kernel paketini indirmeniz tavsiye edilir. `linux-image-extra` paketi [aufs](https://docs.docker.com/engine/userguide/storagedriver/aufs-driver/) storage driver kullanabilmenizi sağlar.
+
+Kernel versiyonuna göre `linux-image-extra` paketini yükleyin:
+
+1. Ubuntu ana bilgisayarda bir terminal açın.
+
+2. Paket yöneticisini güncelleyin.
+
+```bash
+$ sudo apt-get update
+```
+
+3. Tavsiye edilen paketi yükleyin.
+
+```bash
+$ sudo apt-get install linux-image-extra-$(uname -r)
+```
+
+4. Devam edin ve Docker yükleyin.
+
+Eğer Ubuntu 14.04 veya 12.04 kullanıyorsanız `apparmor` gereklidir.
+
+```bash
+$ sudo apt-get install apparmor
+```
+
+ile yükleyebilirsiniz.
+
+## Ubuntu Precise 12.04 (LTS)
+
+Ubuntu 12.04 için başka bağımlılıklarda vardır. Bakınız: (https://docs.docker.com/engine/installation/linux/ubuntulinux/)
+
+# Install (Kurulum)
+
+Ubuntu için önkoşulların ve bağımlılıkların yüklü olduğundan emin olun.
+
+Daha sonra aşağıdaki komutları kullanarak Docker'ı yükleyin.
+
+1. Sudo haklarına sahip bir kullanıcı olarak giriş yapın.
+
+2. Paket yöneticisini güncelleyin.
+
+```bash
+$ sudo apt-get update
+```
+
+3. Docker yükleyin.
+
+```bash
+$ sudo apt-get install docker-engine
+```
+
+4. `docker` çalıştırın.
+
+```bash
+$ sudo service docker start
+```
+
+5. Doğru kurulduğunda emin olmak için Hello World!.
+
+```bash
+$ sudo docker run hello-world
+```
+
+###### References:https://docs.docker.com/engine/installation/linux/ubuntulinux/
