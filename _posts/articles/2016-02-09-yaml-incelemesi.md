@@ -2,7 +2,7 @@
 layout: post
 title:  "YAML incelemesi"
 excerpt: ""
-author: mustafaaltinkaynak
+author: mustafa_altinkaynak
 date:   2016-02-09
 categories: articles
 tags: [yaml]
