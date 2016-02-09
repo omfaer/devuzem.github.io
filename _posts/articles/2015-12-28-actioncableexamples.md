@@ -2,7 +2,7 @@
 layout: post
 title:  "Action Cable Examples"
 excerpt: ""
-author: uzem
+author: omfaer
 date:   2015-12-28
 categories: articles
 comments: true
