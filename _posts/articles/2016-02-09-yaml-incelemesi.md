@@ -132,4 +132,6 @@ development:
   pool: 10
 ``` 
 
+Kaynak : https://en.wikipedia.org/wiki/YAML
+
 Bir sonraki yazımızda görüşmek üzere. 
