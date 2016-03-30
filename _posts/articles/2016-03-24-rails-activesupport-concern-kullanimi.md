@@ -19,7 +19,7 @@ Aşağıdaki gibi `Post` ve `Comment` modellerimizin olduğunu ve like/dislike g
 # models/post.rb
 class Post < ActiveRecord::Base
   # Validations
-  validates :title, :content, presence: true
+  validates :title, :content, presence: :true
   # Relations
   has_many :votes
   has_many :comments
